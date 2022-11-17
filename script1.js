@@ -28,7 +28,7 @@ showTasks(); //calling showTask function
 addBtn.onclick = () => {
   //when user click on plus icon button
   let userEnteredValue = [inputBox.value, date.value]; //getting input field value
-  let getLocalStorageData = localStorage.getItem("New Todo"); //getting localstorage
+  let getLocalStorageData = localStorage.getItem("Students"); //getting localstorage
   if (getLocalStorageData == null) {
     //if localstorage has no data
     listArray = []; //create a blank array
@@ -36,14 +36,14 @@ addBtn.onclick = () => {
     listArray = JSON.parse(getLocalStorageData); //transforming json string into a js object
   }
   listArray.push(userEnteredValue); //pushing or adding new value in array
-  localStorage.setItem("New Todo", JSON.stringify(listArray)); //transforming js object into a json string
+  localStorage.setItem("Students", JSON.stringify(listArray)); //transforming js object into a json string
   showTasks(); //calling showTask function
   addBtn.classList.remove("active"); //unactive the add button once the task added
   date.value = "";
 };
 
 function showTasks() {
-  let getLocalStorageData = localStorage.getItem("New Todo");
+  let getLocalStorageData = localStorage.getItem("Students");
   if (getLocalStorageData == null) {
     listArray = [];
   } else {
@@ -88,16 +88,16 @@ function showTasks() {
 
 // delete task function
 function deleteTask(index) {
-  let getLocalStorageData = localStorage.getItem("New Todo");
+  let getLocalStorageData = localStorage.getItem("Students");
   listArray = JSON.parse(getLocalStorageData);
   listArray.splice(index, 1); //delete or remove the li
-  localStorage.setItem("New Todo", JSON.stringify(listArray));
+  localStorage.setItem("Students", JSON.stringify(listArray));
   showTasks(); //call the showTasks function
 }
 
 // delete all tasks function
 deleteAllBtn.onclick = () => {
-  let getLocalStorageData = localStorage.getItem("New Todo"); //getting localstorage
+  let getLocalStorageData = localStorage.getItem("Students"); //getting localstorage
   if (getLocalStorageData == null) {
     //if localstorage has no data
     listArray = []; //create a blank array
@@ -105,7 +105,7 @@ deleteAllBtn.onclick = () => {
     listArray = JSON.parse(getLocalStorageData); //transforming json string into a js object
     listArray = []; //create a blank array
   }
-  localStorage.setItem("New Todo", JSON.stringify(listArray)); //set the item in localstorage
+  localStorage.setItem("Students", JSON.stringify(listArray)); //set the item in localstorage
   showTasks(); //call the showTasks function
 };
 document.querySelectorAll(".accordion-item").forEach((at) => {
